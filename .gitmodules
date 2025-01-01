@@ -1,0 +1,3 @@
+[submodule "vendor/wb-modules"]
+	path = vendor/wb-modules
+	url = https://github.com/HoneyGol-Microsystems/wb-modules
