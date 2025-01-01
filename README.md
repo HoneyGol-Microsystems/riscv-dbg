@@ -1,3 +1,14 @@
+# riscv-dbg VESP fork
+This fork is intented to be used with VESP CPU cores. Wishbone translation layer from ibex_wb is adopted.
+There are 4 FuseSoC cores:
+- riscv-dbg: common base RTL
+- riscv-dbg-tb: simulation RTL
+- riscv-dbg-bscane: top core, Wishbone+BSCANE2 interfaces
+- riscv-dbg-jtag: top core, Wishbone+JTAG interfaces
+
+For synthesis, pick either riscv-dbg-bscane or riscv-dbg-jtag. For simulation, riscv-dbg-jtag and riscv-dbg-tb are required. These cores depend on [wb-modules](https://github.com/HoneyGol-Microsystems/wb-modules) and [PULP common cells](https://github.com/HoneyGol-Microsystems/pulp_common_cells).
+
+Original README follows...
 # RISC-V Debug Support for various Cores
 
 This module is an implementation of a debug unit compliant with the [RISC-V

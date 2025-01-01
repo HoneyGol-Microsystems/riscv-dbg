@@ -1,0 +1,17 @@
+CAPI=2:
+name: pulp-platform:ip:riscv-dbg-bscane:1.0.0
+description: PULP RISC-V Debug Modules, Xilinx BSCANE version
+
+filesets:
+  rtl:
+    files:
+      - src/dmi_bscane_tap.sv
+    file_type: systemVerilogSource
+    depend:
+      - pulp-platform:ip:riscv-dbg-common
+
+targets:
+  default: &default
+    filesets:
+      - rtl
+    toplevel: dummy

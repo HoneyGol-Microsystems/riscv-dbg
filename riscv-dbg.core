@@ -1,0 +1,32 @@
+CAPI=2:
+name: pulp-platform:ip:riscv-dbg-common:1.0.0
+description: PULP RISC-V Debug Modules Common
+
+filesets:
+  rtl:
+    files:
+      - src/tc_clk.sv
+      - src/dm_pkg.sv
+      - src/dmi_intf.sv
+      - src/dm_csrs.sv
+      - debug_rom/debug_rom.sv
+      - debug_rom/debug_rom_one_scratch.sv
+      - src/dm_mem.sv
+      - src/dmi_cdc.sv
+      - src/dmi_jtag.sv
+      - src/dm_sba.sv
+      - src/dm_top.sv
+      - wb/ibex_core_if.sv
+      - wb/ibexm2wbs.sv
+      - wb/ibexs2wbm.sv
+      - wb/wb_dm_top.sv
+    file_type: systemVerilogSource
+    depend:
+      - hgm:vesp-ip:wb-modules
+      - pulp-platform.org::common_cells:1.37.0
+
+targets:
+  default: &default
+    filesets:
+      - rtl
+    toplevel: dummy

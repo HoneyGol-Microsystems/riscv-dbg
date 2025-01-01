@@ -1,0 +1,17 @@
+CAPI=2:
+name: pulp-platform:ip:riscv-dbg-tb:1.0.0
+description: PULP RISC-V Debug Modules, verification modules
+
+filesets:
+  rtl:
+    files:
+      - src/dm_pkg.sv
+      - src/dmi_test.sv
+      - tb/SimJTAG.sv
+    file_type: systemVerilogSource
+
+targets:
+  default: &default
+    filesets:
+      - rtl
+    toplevel: dummy
