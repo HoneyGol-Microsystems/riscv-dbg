@@ -8,14 +8,14 @@ module wb_dm_top
     parameter logic [NrHarts-1:0]      SelectableHarts  = 1,      // Bitmask to select physically available harts for systems that don't use hart numbers in a contiguous fashion.
     parameter int unsigned             DmBaseAddress    = 'h1000  // default to non-zero page
   ) (
-    input  wire                        clk,                  // clock
-    input  wire                        rst_n,                // asynchronous reset active low, connect PoR here, not the system reset
-    input  wire                        testmode,
-    output logic                       ndmreset,             // non-debug module reset
-    output logic                       dmactive,             // debug module is active
-    output logic [NrHarts-1:0]         debug_req,            // async debug request
-    input  wire  [NrHarts-1:0]         unavailable,          // communicate whether the hart is unavailable (e.g.: power down)
-    input  /*wire*/ dm::hartinfo_t [NrHarts-1:0] hartinfo,
+    input  wire                              clk,                  // clock
+    input  wire                              rst_n,                // asynchronous reset active low, connect PoR here, not the system reset
+    input  wire                              testmode,
+    output logic                             ndmreset,             // non-debug module reset
+    output logic                             dmactive,             // debug module is active
+    output logic [NrHarts-1:0]               debug_req,            // async debug request
+    input  wire  [NrHarts-1:0]               unavailable,          // communicate whether the hart is unavailable (e.g.: power down)
+    input  wire dm::hartinfo_t [NrHarts-1:0] hartinfo,
 
     /* Wishbone interfaces */
     wishbone_p_if.slave                wbs,
