@@ -5,8 +5,10 @@
 module wb_dm_top
   #(parameter int                      NrHarts          = 1,
     parameter int                      BusWidth         = 32,
-    parameter logic [NrHarts-1:0]      SelectableHarts  = 1) // Bitmask to select physically available harts for systems that don't use hart numbers in a contiguous fashion.
-   (input  wire                        clk,                  // clock
+    parameter logic [NrHarts-1:0]      SelectableHarts  = 1,      // Bitmask to select physically available harts for systems that don't use hart numbers in a contiguous fashion.
+    parameter int unsigned             DmBaseAddress    = 'h1000  // default to non-zero page
+  ) (
+    input  wire                        clk,                  // clock
     input  wire                        rst_n,                // asynchronous reset active low, connect PoR here, not the system reset
     input  wire                        testmode,
     output logic                       ndmreset,             // non-debug module reset
@@ -42,7 +44,8 @@ module wb_dm_top
    dm_top
      #(.NrHarts (NrHarts),
        .BusWidth(BusWidth),
-       .SelectableHarts(SelectableHarts))
+       .SelectableHarts(SelectableHarts),
+       .DmBaseAddress(DmBaseAddress))
    inst_dm_top
      (.clk_i            (clk),
       .rst_ni           (rst_n),
