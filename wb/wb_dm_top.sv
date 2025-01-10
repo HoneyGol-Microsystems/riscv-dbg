@@ -12,6 +12,7 @@ module wb_dm_top
     input  wire                              rst_n,                // asynchronous reset active low, connect PoR here, not the system reset
     input  wire                              testmode,
     output logic                             ndmreset,             // non-debug module reset
+    input  wire logic                        ndmreset_ack,         // non-debug module reset ack
     output logic                             dmactive,             // debug module is active
     output logic [NrHarts-1:0]               debug_req,            // async debug request
     input  wire  [NrHarts-1:0]               unavailable,          // communicate whether the hart is unavailable (e.g.: power down)
@@ -51,6 +52,7 @@ module wb_dm_top
       .rst_ni           (rst_n),
       .testmode_i       (testmode),
       .ndmreset_o       (ndmreset),
+      .ndmreset_ack_i   (ndmreset_ack),
       .dmactive_o       (dmactive),
       .debug_req_o      (debug_req),
       .unavailable_i    (unavailable),
